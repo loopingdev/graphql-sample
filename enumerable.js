@@ -44,7 +44,6 @@ class Enumerable {
         } while(newCount > 0);
 
         return(count);
-
     }
 
     async tokenOfOwnerByIndex(owner, index) {
@@ -86,6 +85,36 @@ class Enumerable {
                 return results.data.erc721Tokens.length > 0 ? Number(results.data.erc721Tokens[0].identifier) : null;
             }    
     }
+
+
+    async allTokens() {
+        let count = 0;
+        let newCount = 0;
+        let skip = 0;
+        let tokens = [];
+        do {            
+            const results = await this.client.query({
+                        query: gql`
+                            query allTokens {
+                                erc721Tokens(
+                                    where: {contract: "${this.contract}"}
+                                    first: 1000
+                                    skip: ${ skip }
+                                ) {
+                                    identifier
+                                }
+                        }`
+                    });            
+            newCount = results.data.erc721Tokens.length;
+            results.data.erc721Tokens.forEach(t => tokens.push(Number(t.identifier)) )
+            count += newCount;
+            skip += this.DEFAULT_SKIP;
+
+        } while(newCount > 0);
+
+        return(tokens);
+    }
+
 }
 
 
