@@ -91,33 +91,3 @@ class Enumerable {
 
 module.exports = { Enumerable  }
 
-
-// const { gql, ApolloClient, InMemoryCache } = require('@apollo/client/core');
-
-// (async () => {
-
-//     const client = new ApolloClient({
-//         uri: 'https://graph.vitruveo.xyz/subgraphs/name/tokens/erc721/',
-//         cache: new InMemoryCache(),
-//     });
-//     const results = await client.query({
-//         query: gql`
-//                 query getTokens($owner: ID!) {
-//                     erc721Contract(id: "0xaEf0a72A661B82CB1d871FCA5117486C664EeF13") {
-//                     tokens(
-//                         orderBy: id
-//                         where: {owner: $owner}
-//                     ) {
-//                         uri
-//                         id
-//                         identifier
-//                     }
-//                 }}`,
-//         variables: {
-//             owner: "0x2849Ec99Ff282Cd3452861561F7Cea4f82e446f5",
-//         },
-//     });
-
-//     console.log(results)
-
-// })()
