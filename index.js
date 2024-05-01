@@ -3,16 +3,17 @@ const { Enumerable } = require('./enumerable.js');
 (async () => {
 
     // Contract address as parameter
-    const enumerable = new Enumerable('0x20152506e44ba17f73dbf8fed08d23156a0344f9');
+    const enumerable = new Enumerable('0xd2c4fb77517bC8D1A9dA13dbEA0Bf4B8B29037dD');
 
-    const result1 = await enumerable.totalSupply();
-    console.log(result1);
 
-    const result2 = await enumerable.tokenOfOwnerByIndex('0x8bc5fe9f009ffd8d8c3f22dc7df73757ab0efbe2', 10);
-    console.log(result2);
 
-    const result3 = await enumerable.tokenByIndex(25);
-    console.log(result3);
+   
+    for (let i = 0; i < 10200; i++) {
+        const token = await enumerable.tokenOfOwnerByIndex('0xE21098078a747E00b226CB9500efC3d8ED66FCdB', i);
+      
+        if (token !== null) {
+            console.log(`Token at index ${i}: ${token}`);
+        }
+    }
 
-})()
-
+})();
