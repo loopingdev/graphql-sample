@@ -1,0 +1,11 @@
+{
+  "name": "graphql-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/client": "^3.9.11"
+  }
+}
